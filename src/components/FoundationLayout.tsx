@@ -272,27 +272,76 @@ export function HistoryPage() {
     </FoundationLayout>
   )
 }
-
 export function ConferencesPage() {
   return (
     <FoundationLayout>
-      <PageSection icon={<CalendarDays size={22} />} eyebrow="Conferences" title="The Heidelberger Foundation">
-        <div className="conference-grid">
-          <article>
-            <p className="card-kicker">TESTING gathering</p>
-            <h3>Heidelberger Foundation Conference</h3>
-            <p>Use this section to announce dates, host institutions, speaker lists, and registration details.</p>
-          </article>
-          <article>
-            <p className="card-kicker">Proceedings</p>
-            <h3>Research presentations</h3>
-            <p>Publish meeting themes, abstracts, invited talks, and post-conference materials for attendees.</p>
-          </article>
-          <article>
-            <p className="card-kicker">Participation</p>
-            <h3>Invitations and inquiries</h3>
-            <p>Direct researchers, sponsors, and guests to the contact page for conference-related questions.</p>
-          </article>
+      <PageSection icon={<CalendarDays size={22} />} eyebrow="Conferences" title="The Heidelberger Symposium">
+        
+        {/* Main Conference Grid - Removed borders, background cards, and extra padding */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          
+          {/* Photo Column - Removed fixed height, centering wrappers, and background colors */}
+          <div className="w-full">
+            <img 
+              src="/sympos.png" 
+              alt="Scientific Conference Presentation" 
+              className="w-full h-auto rounded-xl shadow-sm"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const parent = e.currentTarget.parentElement;
+                if (parent) parent.innerHTML = '<span class="text-sm text-[var(--muted)] uppercase tracking-wider font-medium">Conference Photo</span>';
+              }}
+            />
+          </div>
+
+          {/* Text Content on Right */}
+          <div className="md:col-span-2 flex flex-col gap-6">
+            <article>
+              <h4 className="text-xl font-serif mb-2">The Charles Heidelberger Symposia on Cancer Research (CHSCR) 
+                have been supported in part by the Foundation, continuing its 
+                vital role in bringing together leading cancer researchers around the world. The purpose of the Heidelberger 
+                Symposium is to encourage information sharing, foster interdisciplinary collaboration, 
+                and accelerate advancements in cancer research—carrying forward the legacy of Professor 
+                Charles Heidelberger. These symposia serve as a platform for exploring cutting-edge research, 
+                discussing novel therapeutic strategies, and expediting the translation of discoveries 
+                from bench to bedside in the pursuit of eradicating human cancer.</h4>
+            </article>
+          </div>
+        </div>
+
+        {/* Previous Locations Text Box Section Below */}
+        <div className="mt-12 border-t border-[var(--line)] pt-8 max-w-xl mx-auto flex flex-col items-start justify-center">
+          <h3 className="text-xl font-serif text-[var(--ink)] mb-4 text-center w-full">
+            To date, the symposium has been held in the following locations:
+          </h3>
+          <p className="text-sm text-[var(--muted)] tracking-wide leading-relaxed pl-4 md:pl-8">
+            1985 1st International Heidelberger Symposium, Argonne, Illinois, USA <br />
+            1987 2nd International Heidelberger Symposium, Honolulu, Hawaii, USA<br />
+            1989 3rd International Heidelberger Symposium, Kyoto, Japan<br />
+            1991 4th International Heidelberger Symposium, Marina Del Rey, CA, USA<br />
+            1994 5th International Heidelberger Symposium, Essen, Germany<br />
+            1996 6th International Heidelberger Symposium, Honolulu, Hawaii, USA<br />
+            1997 7th International Heidelberger Symposium, Gunzburg, Germany<br />
+            2000 8th International Heidelberger Symposium, Marina Del Rey, CA, USA<br />
+            2002 9th International Heidelberger Symposium, Bergen, Norway<br />
+            2004 10th International Heidelberger Symposium, Yokohama, Japan<br />
+            2006 11th International Heidelberger Symposium, Phitsanulok, Thailand<br />
+            2007 12th International Heidelberger Symposium, Jerusalem, Israel<br />
+            2007 13th International Heidelberger Symposium, New York City, NY, USA<br />
+            2008 14th International Heidelberger Symposium, Urumqi, China<br />
+            2010 15th International Heidelberger Symposium, Phitsanulok, Thailand<br />
+            2010 16th International Heidelberger Symposium, Coimbra, Portugal<br />
+            2011 17th International Heidelberger Symposium, Xi’an, China<br />
+            2012 18th International Heidelberger Symposium, Ulm, Germany<br />
+            2013 19th International Heidelberger Symposium, Kagoshima, Japan<br />
+            2014 20th International Heidelberger Symposium, Arica, Chile<br />
+            2016 21st International Heidelberger Symposium, Moscow, Russia<br />
+            2017 22nd International Heidelberger Symposium, Urumqi, China<br />
+            2019 23rd International Heidelberger Symposium, Sardinia, Italy<br />
+            2022 24th International Heidelberger Symposium, Arica, Chile<br />
+            2023 25th International Heidelberger Symposium, Hiroshima, Japan<br />
+            2024 26th International Heidelberger Symposium, Belfast, Northern Ireland, UK
+          </p>
         </div>
       </PageSection>
     </FoundationLayout>
@@ -300,18 +349,70 @@ export function ConferencesPage() {
 }
 
 export function BoardPage() {
+  const boardMembers = [
+    {
+      name: "Eliezer Huberman, PhD",
+      role: "President and Member of the Board of Directors",
+      description: "Founder, scientific director, and CEO of Novadrug LLC",
+      image: "/images.jpeg", // Replace with your actual image path in /public
+    },
+    {
+      name: "Joseph R Landolph, Jr, PhD",
+      role: "Secretary, Treasurer, and Member of the Board of Directors",
+      description: "Professor of Departments of Immunology and Immunological Therapeutics and Pathology, Member of USC/Norris Comprehensive Cancer Center, Keck School of Medicine",
+      image: "/joseph-landolph.avif", // Replace with your actual image path in /public
+    },
+    {
+      name: "Wei Li, PhD",
+      role: "Member of the Board of Directors",
+      description: "Professor and Director of Genetics, Molecular & Cell Biology Graduate Program, Department of Dermatology and Member of USC-Norris Comprehensive Cancer Center, the University of Southern California",
+      image: "/Wei-Li-328.webp", // Replace with your actual image path in /public
+    },
+  ]
+
   return (
     <FoundationLayout>
-      <PageSection icon={<UsersRound size={22} />} eyebrow="Board Members" title="Governance with clear responsibility.">
-        <div className="board-grid">
-          {['Board Chair', 'Treasurer', 'Secretary', 'Scientific Advisor', 'Trustee', 'Trustee'].map((role) => (
-            <article key={role} className="board-card">
-              <span>{role}</span>
-              <h3>Name to be added</h3>
-              <p>Short biography, appointment information, or committee responsibilities can be added here.</p>
+      <PageSection icon={<UsersRound size={22} />} eyebrow="Board Members" title="Meet the Board of Directors">
+        
+        {/* Responsive Grid Container: 1 column on mobile, 3 columns on tablet/desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mt-8">
+          {boardMembers.map((member) => (
+            <article key={member.name} className="flex flex-col gap-4">
+              
+              {/* Image Block Container with a subtle grey fallback frame */}
+              <div className="w-full aspect-square bg-[#e5e7eb] rounded-xl overflow-hidden shadow-sm flex items-center justify-center">
+                <img 
+                  src={member.image} 
+                  alt={`Portrait of ${member.name}`} 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fail-safe wrapper if you haven't uploaded the image asset file yet
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `<span class="text-xs text-[var(--muted)] font-medium uppercase tracking-wider px-4 text-center">${member.name} Photo</span>`;
+                    }
+                  }}
+                />
+              </div>
+
+              {/* Text Layout Stacked Underneath Image */}
+              <div className="flex flex-col gap-2">
+                <span className="text-xs text-[var(--muted)] font-medium uppercase tracking-wide leading-relaxed">
+                  {member.role}
+                </span>
+                <h3 className="text-xl font-serif text-[var(--ink)] font-bold">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-[var(--ink)] opacity-90 leading-relaxed font-sans">
+                  {member.description}
+                </p>
+              </div>
+
             </article>
           ))}
         </div>
+
       </PageSection>
     </FoundationLayout>
   )
