@@ -60,25 +60,55 @@ export function FoundationLayout({ children }: { children: ReactNode }) {
 export function HomePage() {
   return (
     <FoundationLayout>
-      <section className="hero-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16">
-        <div className="hero-copy">
-          <p className="eyebrow">Research, fellowship, and scientific exchange</p>
-          <h1>The Charles and Patricia Heidelberger Foundation for Cancer Research</h1>
-          <p className="hero-lede">
-            Through its support of scientific symposia and collaborations, the Charles and Patricia Heidelberger
-            Foundation remains steadfast in its mission to nurture the next generation of cancer researchers and
-            contribute meaningfully to the global effort against cancer.
-          </p>
-          <div className="hero-actions">
-            <Link to="/mission" className="primary-action">
-              Explore the mission <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-            <Link to="/contact" className="secondary-action">
-              Contact the foundation
-            </Link>
-          </div>
-        </div>
+      {/* Split Hero Section with Background Photo */}
+      <section 
+        className="relative min-h-[70vh] bg-cover bg-center bg-no-repeat py-12 px-5 flex items-center"
+        style={{ 
+          backgroundImage: "url('/heid1.png')" // Replace with your actual background photo file path in /public
+        }}
+      >
+        {/* Subtle dark tint layer over the background image */}
+        <div className="absolute inset-0 bg-black/5 pointer-events-none" />
 
+        {/* 2-Column Responsive Grid: Stacks on mobile, splits 50/50 on desktop */}
+        <div className="relative z-10 mx-auto max-w-7xl w-full grid grid-cols-1 md:grid-cols-1 gap-8 items-center">
+          
+          {/* Translucent White Box Container (Now anchored strictly to the Left side) */}
+          <div className="bg-white/70 border border-white/40 p-8 md:p-12 rounded-3xl shadow-xl flex flex-col items-start text-left gap-5">
+            
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--muted)]">
+              Research, fellowship, and scientific exchange
+            </p>
+            
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[var(--ink)] leading-tight">
+              The Charles and Patricia Heidelberger Foundation for Cancer Research
+            </h1>
+            
+            <p className="text-base text-[var(--ink)] opacity-90 leading-relaxed font-sans">
+              Through its support of scientific symposia and collaborations, the Charles and Patricia Heidelberger
+              Foundation remains steadfast in its mission to nurture the next generation of cancer researchers and
+              contribute meaningfully to the global effort against cancer.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
+              <Link to="/mission" className="primary-action flex items-center justify-center gap-2">
+                Explore the mission <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+              <Link to="/contact" className="secondary-action flex items-center justify-center">
+                Contact the foundation
+              </Link>
+            </div>
+
+          </div>
+
+          {/* Empty Right Column: This empty space allows the background photo to show through clearly on desktop */}
+          <div className="hidden md:block pointer-events-none" aria-hidden="true" />
+
+        </div>
+      </section>
+
+      {/* Biography Section Below the Split Banner */}
+      <section className="mx-auto max-w-7xl px-5 py-20">
         <aside className="founder-card" aria-label="Charles Heidelberger biography">
           <div className="founder-photo-wrap">
             <img
