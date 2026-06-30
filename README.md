@@ -1,6 +1,6 @@
 # Charles and Patricia Heidelberger Foundation Website
 
-A polished foundation website for the Charles and Patricia Heidelberger Foundation. The site presents tabbed sections for Home, Mission, History, Conferences, Board Members, and Contact, with a Netlify Forms-backed contact workflow.
+A polished foundation website for the Charles and Patricia Heidelberger Foundation. The site presents tabbed sections for Home, Mission, History, Conferences, Board Members, and Contact. Originally made on Netlify, but edited on VSCode for Vercel, so this may not be accurate.
 
 ## Key Technologies
 
