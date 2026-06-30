@@ -8,7 +8,7 @@ import {
   Microscope,
   UsersRound,
 } from 'lucide-react'
-import { type FormEvent, type ReactNode, useState } from 'react'
+import { type ReactNode } from 'react'
 
 const tabs = [
   { to: '/', label: 'Home' },
@@ -318,77 +318,13 @@ export function BoardPage() {
 }
 
 export function ContactPage() {
-  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setFormState('sending')
-
-    try {
-      const formData = new FormData(event.currentTarget)
-      const encoded = new URLSearchParams()
-      formData.forEach((value, key) => {
-        if (typeof value === 'string') encoded.append(key, value)
-      })
-      const response = await fetch('/__forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encoded.toString(),
-      })
-
-      if (!response.ok) throw new Error('Form submission failed')
-      event.currentTarget.reset()
-      setFormState('sent')
-    } catch {
-      setFormState('error')
-    }
-  }
-
   return (
     <FoundationLayout>
       <PageSection icon={<Mail size={22} />} eyebrow="Contact" title="Reach the foundation.">
-        <div className="contact-layout">
-          <div className="contact-note">
-            <p>
-              Use the form for general inquiries, conference questions, or board correspondence. Please be patient with us.
-            </p>
-            <p className="fine-print">Please contact wli@usc.edu.</p>
-          </div>
-
-          <form className="contact-form" name="foundation-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
-            <input type="hidden" name="form-name" value="foundation-contact" />
-            <p className="hidden-field">
-              <label>
-                Do not fill this out: <input name="bot-field" />
-              </label>
-            </p>
-            <label>
-              Name
-              <input name="name" required autoComplete="name" />
-            </label>
-            <label>
-              Email
-              <input name="email" type="email" required autoComplete="email" />
-            </label>
-            <label>
-              Topic
-              <select name="topic" defaultValue="General inquiry">
-                <option>General inquiry</option>
-                <option>Conference question</option>
-                <option>Board correspondence</option>
-                <option>Grant or partnership inquiry</option>
-              </select>
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows={5} required />
-            </label>
-            <button type="submit" disabled={formState === 'sending'}>
-              {formState === 'sending' ? 'Sending...' : 'Send message'}
-            </button>
-            {formState === 'sent' && <p className="form-status success">Message sent. Thank you for reaching out.</p>}
-            {formState === 'error' && <p className="form-status error">The message could not be sent. Please try again.</p>}
-          </form>
+        <div className="contact-note">
+          <h3>
+            Please contact wli@usc.edu for general inquiries, conference questions, or board correspondence.
+          </h3>
         </div>
       </PageSection>
     </FoundationLayout>
