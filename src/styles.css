@@ -1,4 +1,5 @@
 @import "tailwindcss" source("../");
+@source "./src/**/*.{ts,tsx,js,jsx}";
 
 :root {
   --paper: #f7f4ed;
