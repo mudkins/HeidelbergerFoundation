@@ -1,20 +1,14 @@
-import { defineConfig } from 'vite'
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import viteReact from '@vitejs/plugin-react'
-import viteTsConfigPaths from 'vite-tsconfig-paths'
-import tailwindcss from '@tailwindcss/vite'
-import netlify from '@netlify/vite-plugin-tanstack-start'
+import { defineConfig } from 'vite';
+import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import { nitro } from 'nitro/vite'; // <-- Add this line
+import viteReact from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-const config = defineConfig({
+export default defineConfig({
   plugins: [
-    viteTsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
-    tailwindcss(),
-    netlify(),
-    tanstackStart(),
-    viteReact(),
+    tanstackStart(), 
+    nitro(), // <-- Add this line instead of the netlify() plugin
+    viteReact(), 
+    tsconfigPaths()
   ],
-})
-
-export default config
+});
