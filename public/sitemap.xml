@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/</loc>
+    <loc>https://heidelbergerfoundation.org/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/mission</loc>
+    <loc>https://heidelbergerfoundation.org/mission</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/history</loc>
+    <loc>https://heidelbergerfoundation.org/history</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/conferences</loc>
+    <loc>https://heidelbergerfoundation.org/conferences</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/board</loc>
+    <loc>https://heidelbergerfoundation.org/board</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://heidelberger-foundation-site.vercel.app/contact</loc>
+    <loc>https://heidelbergerfoundation.org/contact</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
